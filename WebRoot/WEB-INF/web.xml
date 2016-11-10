@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>
+	boostrap</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+	
+		<!--	
+  		<jsp-config>里的定义，就是通知当前应用服务器，当前应用系统下，所有的 .jsp, .html 文件，
+		若是没有定义contentType="text/html;charset=gb2312" 时，就会采用预设的 "GB2312" 字符集去处理，
+		如此，就不须要在每个 include 的档案第一行加上 contentType="text/html;charset=gb2312" 了。
+		解决主页乱码的问题。
+ 	-->
+  <jsp-config>
+    <jsp-property-group>    
+        
+  		<description>      
+            Special property group for JSP Configuration JSP example.   
+        </description>   
+        <display-name>JSPConfiguration</display-name>   
+        <url-pattern>*.jsp</url-pattern>   
+        <el-ignored>true</el-ignored>   
+        <page-encoding>UTF-8</page-encoding>   
+        <scripting-invalid>false</scripting-invalid>   
+        <include-prelude></include-prelude>   
+        <include-coda></include-coda>
+    </jsp-property-group>
+</jsp-config>
+</web-app>
