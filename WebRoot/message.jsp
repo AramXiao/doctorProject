@@ -1,4 +1,3 @@
-<%@ include file="header.jsp"%>
 <!DOCTYPE html>
 
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> 
@@ -8,14 +7,32 @@
   <!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
   <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
   
-  <head>
+<head>
     <title>您的皮肤健康顾问</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="" />
     <meta name="author" content="templatemo">
     <meta charset="UTF-8">
+<%@ include file="pub_head.jsp"%>    
+<link href="<%=ctx%>/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+<!-- canvas-to-blob.min.js is only needed if you wish to resize images before upload.
+     This must be loaded before fileinput.min.js -->
+<script src="js/plugins/canvas-to-blob.min.js" type="text/javascript"></script>
+<!-- sortable.min.js is only needed if you wish to sort / rearrange files in initial preview.
+     This must be loaded before fileinput.min.js -->
+<script src="js/plugins/sortable.min.js" type="text/javascript"></script>
+<!-- purify.min.js is only needed if you wish to purify HTML content in your preview for HTML files.
+     This must be loaded before fileinput.min.js -->
+<script src="js/plugins/purify.min.js" type="text/javascript"></script>
+<!-- the main fileinput plugin file -->
+<script src="js/fileinput.min.js"></script>
+<!-- optionally if you need a theme like font awesome theme you can include 
+    it as mentioned below -->
+<!--script src="themes/fa/theme.js"></script-->
+<!-- optionally if you need translation for your language then include 
+    locale file as mentioned below -->
+<script src="js/locales/zh.js"></script>
 
-</head>
 <script>
 var i=0;
 function addDiv(){
@@ -52,10 +69,16 @@ function submitMsg(){
 	}
 	document.message.submit();
 }
+function init(){
+	// initialize with defaults
+	$("#input-id").fileinput();
+	// with plugin options
+	$("#input-id").fileinput({'showUpload':false, 'previewFileType':'any'});
+}
 </script>
-
-<body>
-  
+</head>
+<body onload="init();">
+ <%@ include file="header.jsp"%> 
   <section style="padding-top: 170px;">
   	<div class="outer_container">
 	  	<div class="container">
@@ -86,8 +109,11 @@ function submitMsg(){
 				<div id="form-photo">
 					<label for="name">上传图片</label></br>
 					<div>
+					<input id="input-id" class="form-control" type="file" class="file" data-preview-file-type="text" >
+					<!-- 
 					<input type="file" id="picpath0" name="picpath" style="display:none" onChange="document.getElementById('path0').value=this.value">
 					<input name="path" id="path0" style="width:40%" readonly>&nbsp;<input class="btn btn-success" id="0" type="button" value="浏览" onclick="document.getElementById('picpath0').click();">
+					 -->
 					</div>
 
 				</div>

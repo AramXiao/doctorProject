@@ -1,4 +1,3 @@
-<%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
 <%@ page import="java.text.SimpleDateFormat" %> 
 <%@ page import="java.io.*" %> 
 <jsp:useBean id="smartupload" class="com.jspsmart.upload.SmartUpload"/>
@@ -24,7 +23,7 @@
 
 <body>
 <%
-request.setCharacterEncoding("GBK") ;
+request.setCharacterEncoding("utf-8") ;
 
 String ip = "";
 
@@ -53,7 +52,7 @@ for( int i=0; i<smartupload.getFiles().getCount(); i++ ){
 	String name2 = time + "-" + i + "." + smartupload.getFiles().getFile(i).getFileExt() ; //������ñ�ע���������ļ�������
 	Save_package=time2;//��������ΪΪ�ļ�����
 	Save_package=Save_package.trim(); //ȥ���ո�
-	Save_location="L:/workspace/DR/boostrap/upload/"+ip; //�ļ��еľ���·��
+	Save_location="E:/upload/doctorWu/"+ip; //�ļ��еľ���·��
 	ml = new File(Save_location); 
 	if(ml.exists()) 
 	{}else{ 

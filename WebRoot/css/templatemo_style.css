@@ -247,6 +247,7 @@ footer .row { height: 100%; }
 --------------------------------------------------------*/
 .col-md-4, .col-md-5, .col-md-7, .col-md-8 { padding: 0; }
 
+/*
 .btn-primary {
 	font-size: 2em;
 	padding-bottom: 10px;
@@ -261,14 +262,17 @@ footer .row { height: 100%; }
   	transition: background-color .5s ease;
 }
 
+
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active {
 	background-color: rgb( 180, 52, 107 );
 	box-shadow: 0px 3px 0px 0px rgb( 226, 90, 148 );
-}
+}*/
+
 
 /*------------------------------------------------------
 	MEDIA QUERIES 
 --------------------------------------------------------*/
+
 @media only screen and (min-width: 1200px){
 	h1 { font-size: 4.5em; }
 	.services_buttons { text-align: right; }
@@ -300,7 +304,7 @@ footer .row { height: 100%; }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	h1 { font-size: 2.5em; }
 	nav { font-size: 1em; }
-	.btn-primary { font-size: 1.6em; }
+	/*.btn-primary { font-size: 1.6em; }*/
 	.services_buttons { text-align: left; }
 	.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus, .menu ul li a.current {
 		height: 85px;
@@ -320,7 +324,7 @@ footer .row { height: 100%; }
 	.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
 		height: 100%;
 	}
-	.btn-primary { font-size: 1.5em; }
+	/*.btn-primary { font-size: 1.5em; }*/
 	.services_buttons { text-align: left; }
 	.services_buttons .icon-button { font-size: 210%; }
 	.blog_post img { max-width: 100%; }
@@ -342,7 +346,7 @@ footer .row { height: 100%; }
 		height: 100%;
 	}
 	.navbar-default .navbar-nav>li>a { padding-top: 15px; padding-bottom: 15px; }	
-	.btn-primary { font-size: 1.2em; }	
+	/*.btn-primary { font-size: 1.2em; }*/	
 	.services_buttons { text-align: left; }
 	.services_buttons .icon-button { font-size: 190%; }
 	.blog_post { width: 50%;}
@@ -357,7 +361,7 @@ footer .row { height: 100%; }
 
 @media only screen and (max-width: 430px) {
 	body { font-size: 10px; }
-	.btn-primary { font-size: 1.1em; }	
+	/*.btn-primary { font-size: 1.1em; }*/	
 	.blog_post h2 { font-size: 1.1em; padding: 5px 5px; }
 	.services_buttons .icon-button { font-size: 180%; }
 	.navbar-default .navbar-nav>li>a {
@@ -370,6 +374,7 @@ footer .row { height: 100%; }
 	}
 	#services_tabs { padding-left: 0; }
 }
+
 
 /* http://codepen.io/minimalmonkey/pen/Ecpla */
 

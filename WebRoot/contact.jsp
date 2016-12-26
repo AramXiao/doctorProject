@@ -1,4 +1,3 @@
-<%@ include file="header.jsp"%>
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> 
   <![endif]-->
@@ -11,10 +10,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="" />
     <meta name="author" content="templatemo">
-
+	<%@ include file="pub_head.jsp"%>
 </head>
 <body>
-
+<%@ include file="header.jsp"%>
   <section style="padding-top: 170px;">
   	<div class="outer_container">
 	  	<div class="container">

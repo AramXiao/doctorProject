@@ -1,4 +1,4 @@
-<%@ include file="header.jsp"%>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> 
   <![endif]-->
@@ -14,9 +14,10 @@
 <meta name="description" content="" />
 <meta name="author" content="templatemo">
 <meta charset="UTF-8">
+<%@ include file="pub_head.jsp"%>
 </head>
 <body>
-
+<%@ include file="header.jsp"%> 
 
 <div class="container" id="home">
 <div class="row">
