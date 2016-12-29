@@ -13,7 +13,8 @@
     <meta name="description" content="" />
     <meta name="author" content="templatemo">
     <meta charset="UTF-8">
-<%@ include file="pub_head.jsp"%>    
+<%@ include file="pub_head.jsp"%> 
+<script src="js/base.js"  type="text/javascript"></script>   
 <link href="<%=ctx%>/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 <!-- canvas-to-blob.min.js is only needed if you wish to resize images before upload.
      This must be loaded before fileinput.min.js -->
@@ -32,7 +33,6 @@
 <!-- optionally if you need translation for your language then include 
     locale file as mentioned below -->
 <script src="js/locales/zh.js"></script>
-
 <script>
 var i=0;
 function addDiv(){
@@ -69,15 +69,62 @@ function submitMsg(){
 	}
 	document.message.submit();
 }
-function init(){
-	// initialize with defaults
-	$("#input-id").fileinput();
-	// with plugin options
-	$("#input-id").fileinput({'showUpload':false, 'previewFileType':'any'});
+$(document).ready(function(){
+	initFileInput('input-id','upload.jsp');
+});
+
+function initFileInput(ctrlName, uploadUrl){
+	var control = $('#' + ctrlName); 
+
+    control.fileinput({
+        language: 'zh', //设置语言
+        uploadUrl: uploadUrl, //上传的地址
+        allowedFileExtensions : ['jpg', 'png','gif'],//接收的文件后缀
+        showUpload: true, //是否显示上传按钮
+        showCaption: false,//是否显示标题
+        showPreview: true,
+        maxFileCount: 4,
+        //initialPreview: [
+		//    "<img src='images/home_doctor_Wu.jpg' class='file-preview-image' alt='Desert' title='Desert'>",
+		//],
+		layoutTemplates: {
+			actionZoom: '', //手机版不需要放大功能
+		}
+        //browseClass: "btn btn-primary", //按钮样式             
+       // previewFileIcon: "<i class='glyphicon glyphicon-king'></i>", 
+    });
+    
+    
+    control.on('fileuploaded', function(event, data, previewId, index) {
+	    var form = data.form, files = data.files, extra = data.extra,
+	        response = data.response, reader = data.reader;
+	    
+	    var result = base.json(data.response);
+	    for(var i in result.filesPaths){
+	   		//alert(result.filesPaths[i].filePath);
+	    }
+	    alert('上传成功'); 
+	    console.log('File uploaded triggered');
+	});
+	
+	control.on('filebatchuploadsuccess', function(event, data, previewId, index) {
+	    var form = data.form, files = data.files, extra = data.extra,
+	        response = data.response, reader = data.reader;
+	    console.log('File batch upload success');
+	});
+	control.on('fileuploaderror', function(event, data, msg) {
+	    var form = data.form, files = data.files, extra = data.extra,
+	        response = data.response, reader = data.reader;
+	    console.log('File upload error');
+	   // get message
+	   alert(msg);
+	});
+
 }
+
 </script>
 </head>
-<body onload="init();">
+<body>
  <%@ include file="header.jsp"%> 
   <section style="padding-top: 170px;">
   	<div class="outer_container">
@@ -91,7 +138,7 @@ function init(){
 						  <option value ="female">女</option>
 					</select>&nbsp;
 				<label for="age">年龄</label>	
-					<input type="text" id="age" placeholder="请输入年龄">
+					<input type="text" class="form-control" id="age" placeholder="请输入年龄">
 				</div>					
 				
 				<div class="form-group">
@@ -104,7 +151,7 @@ function init(){
 										
 				<div class="form-group">
 				<label for="name">病情</label>
-					<textarea name="description" cols="5" rows="5" style="width: 100%;" maxlength="1000" placeholder="请输入病情"></textarea>
+					<textarea name="description" class="form-control" cols="5" rows="5" style="width: 100%;" maxlength="1000" placeholder="请输入病情"></textarea>
 				</div>
 				<div id="form-photo">
 					<label for="name">上传图片</label></br>
@@ -127,7 +174,7 @@ function init(){
   	</div>
   </section>
 
-	<%@ include file="footer_top.jsp"%>
+<%@ include file="footer_top.jsp"%>
 
 </body>
 </html>

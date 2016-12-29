@@ -17,8 +17,7 @@
 <%@ include file="pub_head.jsp"%>
 </head>
 <body>
-<%@ include file="header.jsp"%> 
-
+<%@ include file="header.jsp"%>
 <div class="container" id="home">
 <div class="row">
 <div class="col col-md-12">
