@@ -13,6 +13,7 @@ navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 </div>
 
 
+
 <div class="col-md-10 col-sm-10 col-xs-12">
 <div class="navbar-collapse collapse menu">
 <ul class="nav navbar-nav navbar-right">
@@ -26,5 +27,7 @@ navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 </div>
 <!-- /.navbar-collapse --></div>
 </div>
+
 <!-- /.row --></div>
+
 </nav>

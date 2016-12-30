@@ -154,7 +154,7 @@ nav .fa { display: block; text-align: center; margin-bottom: 13px; }
 --------------------------------------------------------*/
 .progress { background-color: black; border-radius: 0px; }
 .progress.vertical:last-of-type { margin-right: 0; }
-.progress-bar {	position:absolute; bottom:0; left:0; } /*http://stackoverflow.com/questions/2015032/align-divs-to-bottom-or-baseline*/
+/*.progress-bar {	position:absolute; bottom:0; left:0; }*/ /*http://stackoverflow.com/questions/2015032/align-divs-to-bottom-or-baseline*/
 .progress-label { position:absolute; width: 100%; bottom:0; }
 
 /*http://stackoverflow.com/questions/16318375/how-to-align-vertically-a-progress-bar-in-twitter-bootstrap*/

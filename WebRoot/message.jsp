@@ -14,14 +14,10 @@
     <meta name="author" content="templatemo">
     <meta charset="UTF-8">
 <%@ include file="pub_head.jsp"%> 
-<script src="js/base.js"  type="text/javascript"></script>   
 <link href="<%=ctx%>/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 <!-- canvas-to-blob.min.js is only needed if you wish to resize images before upload.
      This must be loaded before fileinput.min.js -->
 <script src="js/plugins/canvas-to-blob.min.js" type="text/javascript"></script>
-<!-- sortable.min.js is only needed if you wish to sort / rearrange files in initial preview.
-     This must be loaded before fileinput.min.js -->
-<script src="js/plugins/sortable.min.js" type="text/javascript"></script>
 <!-- purify.min.js is only needed if you wish to purify HTML content in your preview for HTML files.
      This must be loaded before fileinput.min.js -->
 <script src="js/plugins/purify.min.js" type="text/javascript"></script>
@@ -77,19 +73,20 @@ function initFileInput(ctrlName, uploadUrl){
 	var control = $('#' + ctrlName); 
 
     control.fileinput({
-        language: 'zh', //设置语言
-        uploadUrl: uploadUrl, //上传的地址
-        allowedFileExtensions : ['jpg', 'png','gif'],//接收的文件后缀
-        showUpload: true, //是否显示上传按钮
-        showCaption: false,//是否显示标题
-        showPreview: true,
-        maxFileCount: 4,
-        //initialPreview: [
-		//    "<img src='images/home_doctor_Wu.jpg' class='file-preview-image' alt='Desert' title='Desert'>",
-		//],
-		layoutTemplates: {
+       language: 'zh', //设置语言
+       uploadUrl: "upload.jsp", //上传的地址
+       allowedFileExtensions : ['jpg', 'png','gif'],//接收的文件后缀,
+       maxFileCount: 5,
+       enctype: 'multipart/form-data',
+       showUpload: true, //是否显示上传按钮
+       showCaption: false,//是否显示标题
+       browseClass: "btn btn-primary", //按钮样式             
+       previewFileIcon: "<i class='glyphicon glyphicon-king'></i>", 
+       msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+	   layoutTemplates: {
 			actionZoom: '', //手机版不需要放大功能
-		}
+	   },
+	   progressCompleteClass: "progress-bar progress-bar-success",
         //browseClass: "btn btn-primary", //按钮样式             
        // previewFileIcon: "<i class='glyphicon glyphicon-king'></i>", 
     });
@@ -99,9 +96,9 @@ function initFileInput(ctrlName, uploadUrl){
 	    var form = data.form, files = data.files, extra = data.extra,
 	        response = data.response, reader = data.reader;
 	    
-	    var result = base.json(data.response);
+	    var result = data.response;
 	    for(var i in result.filesPaths){
-	   		//alert(result.filesPaths[i].filePath);
+	   		alert(result.filesPaths[i].filePath);
 	    }
 	    alert('上传成功'); 
 	    console.log('File uploaded triggered');
@@ -119,6 +116,7 @@ function initFileInput(ctrlName, uploadUrl){
 	   // get message
 	   alert(msg);
 	});
+	
 
 }
 
@@ -129,7 +127,7 @@ function initFileInput(ctrlName, uploadUrl){
   <section style="padding-top: 170px;">
   	<div class="outer_container">
 	  	<div class="container">
-		  	<form name="message" action="upload.jsp" method="post" enctype="multipart/form-data">
+		  	<form role="form" name="message" action="upload.jsp" method="post" enctype="multipart/form-data">
 				</br>	
 				<div class="form-group">
 				<label for="sex">性别</label>
@@ -137,10 +135,11 @@ function initFileInput(ctrlName, uploadUrl){
 						  <option value ="male">男</option>
 						  <option value ="female">女</option>
 					</select>&nbsp;
-				<label for="age">年龄</label>	
-					<input type="text" class="form-control" id="age" placeholder="请输入年龄">
 				</div>					
-				
+				<div class="form-group">
+					<label for="age">年龄</label>	
+					<input type="text" class="form-control" style="width: 40%;" id="age" placeholder="请输入年龄">
+				</div>
 				<div class="form-group">
 				<label for="name">姓名</label>
 					<input type="text" class="form-control" id="name" placeholder="请输入姓名"></div>				
@@ -153,10 +152,10 @@ function initFileInput(ctrlName, uploadUrl){
 				<label for="name">病情</label>
 					<textarea name="description" class="form-control" cols="5" rows="5" style="width: 100%;" maxlength="1000" placeholder="请输入病情"></textarea>
 				</div>
-				<div id="form-photo">
+				<div id="form-photo" class="form-group">
 					<label for="name">上传图片</label></br>
 					<div>
-					<input id="input-id" class="form-control" type="file" class="file" data-preview-file-type="text" >
+					<input id="input-id" name="upload[]" class="form-control" type="file" multiple class="file">
 					<!-- 
 					<input type="file" id="picpath0" name="picpath" style="display:none" onChange="document.getElementById('path0').value=this.value">
 					<input name="path" id="path0" style="width:40%" readonly>&nbsp;<input class="btn btn-success" id="0" type="button" value="浏览" onclick="document.getElementById('picpath0').click();">
@@ -164,9 +163,9 @@ function initFileInput(ctrlName, uploadUrl){
 					</div>
 
 				</div>
-				</br>
-				<div style="float: left; padding-right: 5px; padding-bottom: 5px;">
-				<input class="btn btn-success" type="button" value="更多" onclick="addDiv()">&nbsp;<button type="button" class="btn btn-success" onclick="submitMsg();">提交</button>
+				<div class="form-group">
+				<!-- <input class="btn btn-success" type="button" value="更多" onclick="addDiv()">&nbsp;<button type="button" class="btn btn-success" onclick="submitMsg();">提交</button> -->
+				<button type="button" class="btn btn-success" onclick="submitMsg();">提交</button>
 				</div>
 			</form>
 	  	</div>
